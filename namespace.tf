@@ -1,6 +1,6 @@
-resource "kubernetes_namespace" "grafana" {
-  metadata {
+# resource "kubernetes_namespace" "grafana" {
+#   metadata {
 
-    name = "grafana"
-  }
-}
+#     name = "grafana"
+#   }
+# }

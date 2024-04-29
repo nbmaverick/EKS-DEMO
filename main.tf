@@ -33,9 +33,9 @@ resource "aws_eks_node_group" "my-nodes" {
   node_role_arn   = aws_iam_role.node-role.arn
 
   subnet_ids = [
-      aws_default_subnet.default_az1.id,
-      aws_default_subnet.default_az2.id,
-      aws_default_subnet.default_az3.id
+    aws_default_subnet.default_az1.id,
+    aws_default_subnet.default_az2.id,
+    aws_default_subnet.default_az3.id
   ]
 
   version = "1.27"
