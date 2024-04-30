@@ -30,7 +30,7 @@ kubectl edit svc prometheus-grafana -n prometheus
 ```
 kubectl get svc -n prometheus
 ```
-### 7. User - admin  Password - prom-operator
+### 7. User - "admin"  Password - "prom-operator"
 
 ### Here you are! Grafana is working!
 
