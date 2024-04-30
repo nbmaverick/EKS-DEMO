@@ -1,9 +1,3 @@
-# resource "kubernetes_namespace" "grafana" {
-#   metadata {
-
-#     name = "grafana"
-#   }
-# }
 resource "time_sleep" "wait_for_kubernetes" {
   depends_on = [
     aws_eks_cluster.myeks
