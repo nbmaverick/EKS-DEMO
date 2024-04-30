@@ -3,11 +3,11 @@
 
 ### Step-by-step access to Prometheus and Grafana
 
-### 1. SSH to EKS Cluster
+## 1. SSH to EKS Cluster
 ```
 aws eks update-kubeconfig --region us-east-2 --name myeks
 ```
-### 2. Ensure access to EKS cluster
+## 2. Ensure access to EKS cluster
 ```
 kubectl get nodes
 ```
@@ -22,7 +22,7 @@ helm version
 ```
 kubectl get svc -n prometheus
 ```
-## 5. Edit Grafana service. replace "type: ClusterIP" to LoadBalancer
+## 5. Edit Grafana service. replace "type: ClusterIP" to "LoadBalancer"
 ```
 kubectl edit svc prometheus-grafana -n prometheus
 ```
@@ -34,7 +34,7 @@ kubectl get svc -n prometheus
 
 ### Here you are! Grafana is working!
 
-### 8. Edit Prometheus service. replace "type: ClusterIP" to LoadBalancer
+## 8. Edit Prometheus service. replace "type: ClusterIP" to LoadBalancer
 ```
 kubectl edit svc prometheus-kube-prometheus-prometheus -n prometheus
 ```
