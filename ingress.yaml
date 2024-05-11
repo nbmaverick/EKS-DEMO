@@ -1,0 +1,49 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-webserver-1
+  namespace: prod
+spec:
+  podSelector:
+    matchLabels:
+      role: webrole1
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              role: webrole2
+      ports:
+        - port: 80
+
+---
+#  Deny all network for PROD namespace
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: prod
+spec:
+  podSelector:
+    matchLabels: {}
+  policyTypes:
+  - Ingress
+
+---
+
+# Deny all to pod prod1 in prod namespace
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: network-policy
+  namespace: prod
+spec:
+  podSelector:
+    matchLabels:
+      role: web1 
+  policyTypes:
+    - Ingress
+    - Egress
