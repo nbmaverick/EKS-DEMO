@@ -41,7 +41,7 @@ resource "aws_eks_node_group" "my-nodes" {
   version = "1.27"
 
   capacity_type  = "ON_DEMAND"
-  instance_types = ["t3.medium"]
+  instance_types = ["t3.small"]
 
   scaling_config {
     desired_size = 1
@@ -57,5 +57,20 @@ resource "aws_eks_node_group" "my-nodes" {
 
   tags = {
     Name = "my-nodes"
+  }
+}
+
+# Login to the cluster
+
+resource "null_resource" "kubeconfig" {
+  depends_on = [aws_eks_cluster.myeks, aws_eks_node_group.my-nodes, time_sleep.wait_for_kubernetes]
+
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+
+  provisioner "local-exec" {
+    command = "aws eks update-kubeconfig --name myeks --region us-east-2"
+    # "aws eks update-kubeconfig --name ${var.cluster_name} --region ${var.region}"
   }
 }
